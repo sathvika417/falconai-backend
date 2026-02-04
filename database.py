@@ -1,0 +1,17 @@
+import os
+from pymongo import MongoClient
+from dotenv import load_dotenv
+
+load_dotenv()
+
+MONGODB_URI = os.getenv("MONGODB_URI")
+
+if not MONGODB_URI:
+    raise Exception("MONGODB_URI not found in environment variables")
+
+client = MongoClient(MONGODB_URI)
+
+db = client["falconai"]
+
+chat_collection = db["chats"]
+message_collection = db["messages"]
