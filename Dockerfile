@@ -7,6 +7,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# make the start script executable and run uvicorn via shell so $PORT expands
-RUN chmod +x start.sh
-CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}"]
+# Run Python script that properly handles PORT environment variable
+CMD ["python", "-c", "import os, subprocess, sys; port = os.environ.get('PORT', '8000'); subprocess.run([sys.executable, '-m', 'uvicorn', 'main:app', '--host', '0.0.0.0', '--port', port])"]
