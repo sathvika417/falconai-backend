@@ -4,3 +4,4 @@ pydantic
 python-dotenv
 pymongo[srv]
 gunicorn
+groq
