@@ -7,5 +7,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-RUN chmod +x start_server.py
+EXPOSE 8000
 CMD ["python", "start_server.py"]
